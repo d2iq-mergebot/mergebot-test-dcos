@@ -1,0 +1,6 @@
+{
+	"ship-it": false,
+	"integrate-it": false,
+	"test-it": false,
+    "test-enterprise": true
+}
