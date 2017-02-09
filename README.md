@@ -152,6 +152,4 @@ Before a pull request can be merged into master, the following checks are requir
 
 # Help
 
-If you have immediate questions please ask the [DC/OS Community](https://dcos.io/community/). Someone else probably has exactly the same question.
-
-
+If you have immediate questions please ask the [DC/OS Community](https://dcos.io/community/).
