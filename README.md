@@ -150,13 +150,3 @@ Before a pull request can be merged into master, the following checks are requir
     - /deploy-vpc-cli: runs [ccm-deploy-test](https://github.com/dcos/dcos/blob/master/test_util/test_installer_ccm.py) with USE_INSTALLER_API=false. A Virtual Private Cloud of centos nodes is spun up by CCM (Mesosphere's Cloud Cluster Manager) and the installer (dcos_generate_config.sh) is used via the CLI options to deploy DC/OS. Finally, the same integration_test.py is run
     - /deploy-vpc-api: the same as /deploy-vpc-cli (see above) except uses USE_INSTALLER_API=true, which causes the installer to be started with the `--web` option and then controlled entirely by the HTTP API
 
-# TODO
-
-Lots of docs are still being written. If you have immediate questions please ask the [DC/OS Community](https://dcos.io/community/). Someone else probably has exactly the same question.
-
- - Add getting started on common distros / dependencies
- - Add overview of what is in here, how it works
- - Add general theory of stuff that goes in here.
- - PR (guidelines, testing)
- - How to make different sorts of common changes
-
