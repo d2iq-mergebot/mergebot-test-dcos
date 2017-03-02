@@ -151,12 +151,3 @@ Before a pull request can be merged into master, the following checks are requir
     - /deploy-vpc-api: the same as /deploy-vpc-cli (see above) except uses USE_INSTALLER_API=true, which causes the installer to be started with the `--web` option and then controlled entirely by the HTTP API
 
 # TODO
-
-Lots of docs are still being written. If you have immediate questions please ask the [DC/OS Community](https://dcos.io/community/). Someone else probably has exactly the same question.
-
- - Add getting started on common distros / dependencies
- - Add overview of what is in here, how it works
- - Add general theory of stuff that goes in here.
- - PR (guidelines, testing)
- - How to make different sorts of common changes
-
