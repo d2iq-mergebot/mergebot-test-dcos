@@ -5,7 +5,7 @@
    "bump-ee": true,
     "label": {
                 "enabled": true,
-                "default": "Bug",
+                "default": "Work In Progress",
                 "pr-creator-can-apply": ["Ready For Review", "Work In Progress"]
    }
 }
