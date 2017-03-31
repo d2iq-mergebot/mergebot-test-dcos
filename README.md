@@ -1,4 +1,5 @@
 Testing fix for duplicate bump-ee silent failure
+- expected case worked. verifying original case now.
 
 # DC/OS - The Datacenter Operating System
 
