@@ -387,7 +387,7 @@ def calculate_config_yaml(user_arguments):
 def calculate_mesos_isolation(enable_gpu_isolation):
     isolators = ('cgroups/cpu,cgroups/mem,disk/du,network/cni,filesystem/linux,'
                  'docker/runtime,docker/volume,volume/sandbox_path,posix/rlimits,'
-                 'com_mesosphere_MetricsIsolatorModule')
+                 'namespaces/pid,com_mesosphere_MetricsIsolatorModule')
     if enable_gpu_isolation == 'true':
         isolators += ',cgroups/devices,gpu/nvidia'
     return isolators
@@ -585,7 +585,7 @@ entry = {
         'mesos_dns_ip_sources': '["host", "netinfo"]',
         'master_external_loadbalancer': '',
         'mesos_log_retention_mb': '4000',
-        'mesos_container_log_sink': 'journald+logrotate',
+        'mesos_container_log_sink': 'logrotate',
         'oauth_issuer_url': 'https://dcos.auth0.com/',
         'oauth_client_id': '3yF5TOSzdlI45Q1xspxzeoGBe9fNxm9m',
         'oauth_auth_redirector': 'https://auth.dcos.io',

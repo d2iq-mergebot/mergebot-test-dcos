@@ -38,7 +38,7 @@ def template_by_instance_type(instance_type):
 
 
 def param_dict_to_aws_format(user_parameters):
-    return [{'ParameterKey': k, 'ParameterValue': str(v)} for k, v in user_parameters.items()]
+    return [{'ParameterKey': str(k), 'ParameterValue': str(v)} for k, v in user_parameters.items()]
 
 
 @retry_boto_rate_limits
@@ -97,7 +97,7 @@ class BotoWrapper():
             Capabilities=['CAPABILITY_IAM'],
             # this python API only accepts data in string format; cast as string here
             # so that we may pass parameters directly from yaml (which parses numbers as non-strings)
-            Parameters=[{str(k): str(v) for k, v in p.items()} for p in parameters])
+            Parameters=param_dict_to_aws_format(parameters))
 
     def create_vpc_tagged(self, cidr, name_tag):
         ec2 = self.client('ec2')
@@ -277,12 +277,13 @@ class DcosCfStack(CleanupS3BucketMixin, CfStack):
     @classmethod
     def create(cls, stack_name: str, template_url: str, public_agents: int, private_agents: int,
                admin_location: str, key_pair_name: str, boto_wrapper: BotoWrapper):
+
         parameters = {
             'KeyName': key_pair_name,
             'AdminLocation': admin_location,
             'PublicSlaveInstanceCount': str(public_agents),
             'SlaveInstanceCount': str(private_agents)}
-        stack = boto_wrapper.create_stack(stack_name, template_url, param_dict_to_aws_format(parameters))
+        stack = boto_wrapper.create_stack(stack_name, template_url, parameters)
         # Use stack_name as the binding identifier. At time of implementation,
         # stack.stack_name returns stack_id if Stack was created with ID
         return cls(stack.stack_id, boto_wrapper), SSH_INFO['coreos']
@@ -353,7 +354,7 @@ class DcosZenCfStack(CfStack):
             'PrivateAgentInstanceCount': private_agents,
             'PrivateAgentInstanceType': private_agent_type,
             'PrivateSubnet': private_subnet}
-        stack = boto_wrapper.create_stack(stack_name, template_url, param_dict_to_aws_format(parameters))
+        stack = boto_wrapper.create_stack(stack_name, template_url, parameters)
         os_string = None
         try:
             os_string = template_url.split('/')[-1].split('.')[-2].split('-')[0]
@@ -446,7 +447,7 @@ class VpcCfStack(CfStack):
             'InstanceType': instance_type,
             'AmiCode': instance_ami,
         }
-        stack = boto_wrapper.create_stack(stack_name, template_url, param_dict_to_aws_format(parameters))
+        stack = boto_wrapper.create_stack(stack_name, template_url, parameters)
         return cls(stack.stack_id, boto_wrapper)
 
     def delete(self):
@@ -514,15 +515,15 @@ OS_AMIS = {
                   'us-east-1': 'ami-fa9b9390',
                   'us-west-1': 'ami-12b3ce72',
                   'us-west-2': 'ami-edf11b8d'},
-    'cent-os-7-dcos-prereqs': {'ap-northeast-1': 'ami-965345f8',
-                               'ap-southeast-1': 'ami-332de750',
-                               'ap-southeast-2': 'ami-c80320ab',
-                               'eu-central-1': 'ami-1548ae7a',
-                               'eu-west-1': 'ami-2ea92f5d',
-                               'sa-east-1': 'ami-2921ad45',
-                               'us-east-1': 'ami-fa9b9390',
-                               'us-west-1': 'ami-12b3ce72',
-                               'us-west-2': 'ami-edf11b8d'},
+    'cent-os-7-dcos-prereqs': {'ap-northeast-1': 'ami-5942133e',
+                               'ap-southeast-1': 'ami-83ea59e0',
+                               'ap-southeast-2': 'ami-7f393b1c',
+                               'eu-central-1': 'ami-9e13c7f1',
+                               'eu-west-1': 'ami-41b89327',
+                               'sa-east-1': 'ami-6d600101',
+                               'us-east-1': 'ami-84862092',
+                               'us-west-1': 'ami-794f1619',
+                               'us-west-2': 'ami-4953df29'},
     'coreos': {'ap-northeast-1': 'ami-84e0c7ea',
                'ap-southeast-1': 'ami-84e0c7ea',
                'ap-southeast-2': 'ami-f35b0590',
