@@ -44,6 +44,7 @@ To find the git SHA of any given release, check the latest commit in the version
 
 # Development Environment
 
+=======
 **Linux is required for building and testing DC/OS.**
 
 1. Linux distribution:
@@ -222,3 +223,4 @@ Most of the triggered tests are required for merge, but some are optional (usual
     - /deploy-vpc-api: the same as /deploy-vpc-cli (see above) except uses USE_INSTALLER_API=true, which causes the installer to be started with the `--web` option and then controlled entirely by the HTTP API
 
 # Test Repo
+
