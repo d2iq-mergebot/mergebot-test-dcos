@@ -1,5 +1,6 @@
 Testing fix for duplicate bump-ee silent failure
 - expected case worked. verifying original case now.
+- testing DCOS-14254: mergebot should verify the team-membership of the person issuing the command
 
 # DC/OS - The Datacenter Operating System
 
