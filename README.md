@@ -241,20 +241,4 @@ Most of the triggered tests are required for merge, but some are optional (usual
 
 # Repo Structure
 
-DC/OS itself is composed of many individual components precisely configured to work together in concert.
-
-This repo contains the release and package building tools necessary to produce installers for various on-premises and cloud platforms.
-
-| Directory | Contents |
-| --------- | -------- |
-| *cloud_images*       | Base OS image building tools
-| *config*             | Release configuration
-| *docs*               | Documentation
-| *flake8_dcos_lint*   | Flake8 plugin for testing code quality
-| *dcos_installer*     | Backend for Web, SSH, and some bits of the Advanced installer. Code is being cleaned up
-| *gen*                | Python library for rendering yaml config files for various platforms into packages, with utilities to do things like make "late binding" config set by CloudFormation
-| *packages*           | Packages which make up DC/OS (Mesos, Marathon, AdminRouter, etc). These packages are built by pkgpanda, and combined into a "bootstrap" tarball for deployment.
-| *pkgpanda*           | DC/OS baseline/host package management system. Tools for building, deploying, upgrading, and bundling packages together which live on the root filesystem of a machine / underneath Mesos.
-| *release*            | Release tools for DC/OS. (Building releases, building installers for releases, promoting between channels)
-| *ssh*                | AsyncIO based parallel ssh library used by the installer
-| *test_util*          | various scripts, utilities to help with integration testing
+Testing Pull Request
