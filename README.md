@@ -241,34 +241,5 @@ Most of the triggered tests are required for merge, but some are optional (usual
 
 # Repo Structure
 
-* Test Readme update.
-* Test 2
-* Test 3
-* Test 4
-* Test 5
-* Test 6
-* Test 7
-* Test 8
-* Test 9
-* Test 10
-* Test 11
-* Test 12
-* Test 13   
-* Test 14
-* Test 15
-* Test 16
-* Test 17
-* Test 18
-* Test 19
-* Test 20
-* Test 21
-* Test 22
-* Test 23
-* Test 24
-* Test 25
-* Test 26
-* Test 27
-* Test 28
-* Test 29
-* Test 30
-* Test 31
+* Testing Readme update.
+* Push an update. It should remove the ship-it label, and put it back to Ready for Review.
