@@ -38,7 +38,7 @@ EnvironmentFile=-/var/lib/dcos/marathon/environment.ip.marathon
 Environment=JAVA_HOME=${JAVA_HOME}
 ExecStartPre=/bin/ping -c1 leader.mesos
 ExecStartPre=/opt/mesosphere/bin/bootstrap dcos-marathon
-ExecStartPre=/bin/bash -c 'echo test 9'
+ExecStartPre=/bin/bash -c 'echo test 10'
 ExecStartPre=/bin/bash -c 'echo "HOST_IP=\$(\$MESOS_IP_DISCOVERY_COMMAND)" > /var/lib/dcos/marathon/environment.ip.marathon'
 ExecStartPre=/bin/bash -c 'echo "MARATHON_HOSTNAME=\$(\$MESOS_IP_DISCOVERY_COMMAND)" >> /var/lib/dcos/marathon/environment.ip.marathon'
 ExecStartPre=/bin/bash -c 'echo "LIBPROCESS_IP=\$(\$MESOS_IP_DISCOVERY_COMMAND)" >> /var/lib/dcos/marathon/environment.ip.marathon'
