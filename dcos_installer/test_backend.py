@@ -299,20 +299,15 @@ def test_do_aws_configure(tmpdir, monkeypatch):
 valid_storage_config = """---
 master_list:
  - 127.0.0.1
-aws_template_storage_access_key_id: {key_id}
 aws_template_storage_bucket: {bucket}
 aws_template_storage_bucket_path: mofo-the-gorilla
-aws_template_storage_secret_access_key: {access_key}
 aws_template_upload: true
 """
 
 
 def test_do_aws_cf_configure_valid_storage_config(config_aws, tmpdir, monkeypatch):
     bucket = str(uuid.uuid4())
-    config_str = valid_storage_config.format(
-        key_id=config_aws["access_key_id"],
-        bucket=bucket,
-        access_key=config_aws["secret_access_key"])
+    config_str = valid_storage_config.format(bucket=bucket)
     assert aws_cf_configure(bucket, config_str, config_aws, tmpdir, monkeypatch) == 0
     # TODO: add an assertion that the config that was resolved inside do_aws_cf_configure
     # ended up with the correct region where the above testing bucket was created.
@@ -320,10 +315,7 @@ def test_do_aws_cf_configure_valid_storage_config(config_aws, tmpdir, monkeypatc
 
 def test_override_aws_template_storage_region_name(config_aws, tmpdir, monkeypatch):
     bucket = str(uuid.uuid4())
-    config_str = valid_storage_config.format(
-        key_id=config_aws["access_key_id"],
-        bucket=bucket,
-        access_key=config_aws["secret_access_key"])
+    config_str = valid_storage_config.format(bucket=bucket)
     config_str += '\naws_template_storage_region_name: {}'.format(config_aws['region_name'])
     assert aws_cf_configure(bucket, config_str, config_aws, tmpdir, monkeypatch) == 0
 
