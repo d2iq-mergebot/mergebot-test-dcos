@@ -615,7 +615,6 @@ def set_repository_metadata(repository, metadata, storage_providers, preferred_p
     if 'cloudformation_s3_url' not in config['options']:
         raise RuntimeError("No options.cloudformation_s3_url section in configuration")
 
-    # TODO(cmaloney): get_session shouldn't live in release.storage
     metadata['cloudformation_s3_url_full'] = config['options']['cloudformation_s3_url'] + \
         '/{}/cloudformation'.format(metadata['reproducible_artifact_path'])
 

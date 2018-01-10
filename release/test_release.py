@@ -4,9 +4,9 @@ import os
 import subprocess
 import uuid
 
+import boto3
 import pytest
 
-import gen.build_deploy.aws
 import release
 import release.storage.aws
 from pkgpanda.build import BuildError
@@ -225,9 +225,7 @@ def test_storage_provider_azure(config_azure, tmpdir):
 # TODO(cmaloney): Add skipping when not run under CI with the environment variables
 # So devs without the variables don't see expected failures https://pytest.org/latest/skipping.html
 def test_storage_provider_aws(config_aws, tmpdir):
-    session = gen.build_deploy.aws.get_test_session(config_aws)
-
-    s3 = session.resource('s3')
+    s3 = boto3.session.Session().resource('s3')
     bucket = config_aws['bucket']
     s3_bucket = s3.Bucket(bucket)
     assert s3_bucket in s3.buckets.all(), (

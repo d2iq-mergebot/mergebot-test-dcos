@@ -5,11 +5,10 @@ import subprocess
 import textwrap
 import uuid
 
+import boto3
 import passlib.hash
 import pytest
 
-import gen
-import gen.build_deploy.aws
 import release
 from dcos_installer import backend
 from dcos_installer.config import Config, make_default_config_if_needed, to_config
@@ -331,7 +330,7 @@ def test_override_aws_template_storage_region_name(config_aws, tmpdir, monkeypat
 
 def aws_cf_configure(s3_bucket_name, config, config_aws, tmpdir, monkeypatch):
     monkeypatch.setenv('BOOTSTRAP_VARIANT', 'test_variant')
-    session = gen.build_deploy.aws.get_test_session(config_aws)
+    session = boto3.session.Session()
     s3 = session.resource('s3')
     s3_bucket = s3.Bucket(s3_bucket_name)
     s3_bucket.create(CreateBucketConfiguration={'LocationConstraint': config_aws['region_name']})

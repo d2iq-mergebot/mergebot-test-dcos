@@ -6,23 +6,6 @@ import botocore
 from release.storage import AbstractStorageProvider
 
 
-def get_session(boto3_profile=None, region_name=None, access_key_id=None, secret_access_key=None):
-        if boto3_profile:
-            if access_key_id or secret_access_key or region_name:
-                raise ValueError("access_key_id, secret_access_key, and region_name cannot be used with boto3_profile")
-            return boto3.session.Session(profile_name=boto3_profile)
-        elif access_key_id or secret_access_key or region_name:
-            if not access_key_id or not secret_access_key or not region_name:
-                raise ValueError("access_key_id, secret_access_key, and region_name must all be set")
-            return boto3.session.Session(
-                aws_access_key_id=access_key_id,
-                aws_secret_access_key=secret_access_key,
-                region_name=region_name)
-        else:
-            raise ValueError("boto_profile or explicit AWS credentials (access_key_id, "
-                             "secret_access_key, region_name) must be provided")
-
-
 class S3StorageProvider(AbstractStorageProvider):
     name = 'aws'
 
@@ -31,7 +14,7 @@ class S3StorageProvider(AbstractStorageProvider):
         if object_prefix is not None:
             assert object_prefix and not object_prefix.startswith('/') and not object_prefix.endswith('/')
 
-        self.__session = get_session(boto3_profile, region_name, access_key_id, secret_access_key)
+        self.__session = boto3.session.Session()
         self.__bucket = self.__session.resource('s3').Bucket(bucket)
         self.__object_prefix = object_prefix
         self.__url = download_url

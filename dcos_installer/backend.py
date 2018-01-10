@@ -99,15 +99,11 @@ def validate_aws_template_storage_region_name(aws_template_storage_region_name):
 
 
 def validate_aws_bucket_access(aws_template_storage_region_name,
-                               aws_template_storage_access_key_id,
-                               aws_template_storage_secret_access_key,
                                aws_template_storage_bucket,
                                aws_template_storage_bucket_path,
                                aws_template_storage_bucket_path_autocreate):
 
     session = boto3.session.Session(
-        aws_access_key_id=aws_template_storage_access_key_id,
-        aws_secret_access_key=aws_template_storage_secret_access_key,
         region_name=aws_template_storage_region_name)
 
     bucket = session.resource('s3').Bucket(aws_template_storage_bucket)
@@ -167,13 +163,9 @@ def calculate_cloudformation_s3_url_full(cloudformation_s3_url):
 
 
 def calculate_aws_template_storage_region_name(
-        aws_template_storage_access_key_id,
-        aws_template_storage_secret_access_key,
         aws_template_storage_bucket):
 
-    session = boto3.session.Session(
-        aws_access_key_id=aws_template_storage_access_key_id,
-        aws_secret_access_key=aws_template_storage_secret_access_key)
+    session = boto3.session.Session()
 
     try:
         location_info = session.client('s3').get_bucket_location(Bucket=aws_template_storage_bucket)
