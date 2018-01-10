@@ -6,15 +6,28 @@ import botocore
 from release.storage import AbstractStorageProvider
 
 
+def get_aws_session(access_key_id, secret_access_key, region_name=None):
+    """ This code needs to be run from inside a docker container, where it
+    """
+    if not access_key_id:
+        access_key_id = None
+    if not secret_access_key:
+        secret_access_key = None
+    return boto3.session.Session(
+        aws_access_key_id=access_key_id,
+        aws_secret_access_key=secret_access_key,
+        region_name=region_name)
+
+
 class S3StorageProvider(AbstractStorageProvider):
     name = 'aws'
 
-    def __init__(self, bucket, object_prefix, download_url, boto3_profile=None, region_name=None,
-                 access_key_id=None, secret_access_key=None):
+    def __init__(self, bucket, object_prefix, download_url,
+                 access_key_id=None, secret_access_key=None, region_name=None):
         if object_prefix is not None:
             assert object_prefix and not object_prefix.startswith('/') and not object_prefix.endswith('/')
 
-        self.__session = boto3.session.Session()
+        self.__session = get_aws_session(access_key_id, secret_access_key, region_name)
         self.__bucket = self.__session.resource('s3').Bucket(bucket)
         self.__object_prefix = object_prefix
         self.__url = download_url
