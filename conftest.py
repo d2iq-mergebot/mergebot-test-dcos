@@ -20,10 +20,13 @@ def config_testing(config):
 
 
 @pytest.fixture(scope='module')
-def config_aws(config_testing):
+def config_aws(config_testing, monkeypatch):
     if 'aws' not in config_testing:
         pytest.skip("Skipped because there is no `testing.aws` configuration in dcos-release.config.yaml")
-    return config_testing['aws']
+    config = config_testing['aws']
+    if 'AWS_REGION' not in os.environ:
+        monkeypatch.setenv('AWS_REGION', config['region_name'])
+    return
 
 
 @pytest.fixture(scope='module')
