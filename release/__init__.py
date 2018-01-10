@@ -51,8 +51,9 @@ def expand_env_vars(config):
         elif config.startswith('$'):
             key = config[1:]
             if key not in os.environ:
-                raise ConfigError("Requested environment variable {} in config isn't set in the "
-                                  "environment".format(key))
+                logging.error("Requested environment variable {} in config isn't set in the "
+                              "environment".format(key))
+                return ''
             return os.environ[key]
 
         # No processing to do
