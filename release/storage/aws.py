@@ -7,7 +7,13 @@ from release.storage import AbstractStorageProvider
 
 
 def get_aws_session(access_key_id, secret_access_key, region_name=None):
-    """ This code needs to be run from inside a docker container, where it
+    """ This method will replace access_key_id and secret_access_key
+    with None if one is set to '' This allows falling back to the AWS internal
+    logic so that AWS_SESSION_TOKEN or something else can be used
+
+    This is needed by dcos_installer/backend.py which does AWS actions using
+    explicit credentials. The process is ran from the dcos_generate_config.sh
+    artifact docker container, which can interfere with the usual boto3 credential method
     """
     if not access_key_id:
         access_key_id = None
@@ -23,7 +29,11 @@ class S3StorageProvider(AbstractStorageProvider):
     name = 'aws'
 
     def __init__(self, bucket, object_prefix, download_url,
-                 access_key_id=None, secret_access_key=None, region_name=None):
+                 region_name=None, access_key_id=None, secret_access_key=None):
+        """ If access_key_id and secret_acccess_key are unset, boto3 will
+        try to authenticate by other methods. See here for other credential options:
+        http://boto3.readthedocs.io/en/latest/guide/configuration.html#configuring-credentials
+        """
         if object_prefix is not None:
             assert object_prefix and not object_prefix.startswith('/') and not object_prefix.endswith('/')
 
