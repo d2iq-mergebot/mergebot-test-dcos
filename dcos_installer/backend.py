@@ -5,7 +5,6 @@ libraries to support the dcos installer.
 import json
 import logging
 
-import boto3
 import botocore.exceptions
 
 import gen
@@ -105,10 +104,10 @@ def validate_aws_bucket_access(aws_template_storage_region_name,
                                aws_template_storage_bucket_path,
                                aws_template_storage_bucket_path_autocreate):
 
-    session = boto3.session.Session(
-        aws_access_key_id=aws_template_storage_access_key_id,
-        aws_secret_access_key=aws_template_storage_secret_access_key,
-        region_name=aws_template_storage_region_name)
+    session = release.storage.aws.get_aws_session(
+        aws_template_storage_access_key_id,
+        aws_template_storage_secret_access_key,
+        aws_template_storage_region_name)
 
     bucket = session.resource('s3').Bucket(aws_template_storage_bucket)
 
@@ -132,14 +131,6 @@ def validate_aws_bucket_access(aws_template_storage_region_name,
                         aws_template_storage_bucket_path, aws_template_storage_bucket))
             raise AssertionError("Unable to access s3 path {} in bucket {}: {}".format(
                 aws_template_storage_bucket_path, aws_template_storage_bucket, ex)) from ex
-
-
-def validate_aws_template_storage_access_key_id(aws_template_storage_access_key_id):
-    assert aws_template_storage_access_key_id, "Must be non-empty"
-
-
-def validate_aws_template_storage_secret_access_key(aws_template_storage_secret_access_key):
-    assert aws_template_storage_secret_access_key, "Must be non-empty"
 
 
 def calculate_reproducible_artifact_path(config_id):
@@ -171,9 +162,9 @@ def calculate_aws_template_storage_region_name(
         aws_template_storage_secret_access_key,
         aws_template_storage_bucket):
 
-    session = boto3.session.Session(
-        aws_access_key_id=aws_template_storage_access_key_id,
-        aws_secret_access_key=aws_template_storage_secret_access_key)
+    session = release.storage.aws.get_aws_session(
+        aws_template_storage_access_key_id,
+        aws_template_storage_secret_access_key)
 
     try:
         location_info = session.client('s3').get_bucket_location(Bucket=aws_template_storage_bucket)
@@ -199,9 +190,7 @@ aws_advanced_source = gen.internals.Source({
         lambda aws_template_storage_bucket_path_autocreate:
             gen.calc.validate_true_false(aws_template_storage_bucket_path_autocreate),
         validate_aws_template_storage_region_name,
-        validate_aws_bucket_access,
-        validate_aws_template_storage_access_key_id,
-        validate_aws_template_storage_secret_access_key
+        validate_aws_bucket_access
     ],
     'default': {
         'num_masters': '5',
