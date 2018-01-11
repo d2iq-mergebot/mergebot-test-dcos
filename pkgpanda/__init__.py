@@ -909,7 +909,9 @@ class Install:
                     pass
 
                 if method == "setup":
-                    os.symlink(real_path, os.path.join(base_systemd, unit_name))
+                    # Copy unit files instead of symlinking them so that systemd can boot when DC/OS is installed to a
+                    # non-root volume.
+                    shutil.copyfile(real_path, os.path.join(base_systemd, unit_name), follow_symlinks=True)
 
         if archive:
             # TODO(cmaloney): stop all systemd services in dcos.target.wants
