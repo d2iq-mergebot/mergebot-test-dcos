@@ -5,32 +5,32 @@ import pytest
 import release
 
 
-@pytest.fixture(scope='module')
-def config():
+@pytest.fixture
+def release_config():
     if not os.path.exists('dcos-release.config.yaml'):
         pytest.skip("Skipping because there is no configuration in dcos-release.config.yaml")
     return release.load_config('dcos-release.config.yaml')
 
 
-@pytest.fixture(scope='module')
-def config_testing(config):
-    if 'testing' not in config:
+@pytest.fixture
+def release_config_testing(release_config):
+    if 'testing' not in release_config:
         pytest.skip("Skipped because there is no `testing` configuration in dcos-release.config.yaml")
-    return config['testing']
+    return release_config['testing']
 
 
-@pytest.fixture(scope='module')
-def config_aws(config_testing, monkeypatch):
-    if 'aws' not in config_testing:
+@pytest.fixture
+def release_config_aws(release_config_testing, monkeypatch):
+    if 'aws' not in release_config_testing:
         pytest.skip("Skipped because there is no `testing.aws` configuration in dcos-release.config.yaml")
-    config = config_testing['aws']
+    config = release_config_testing['aws']
     if 'AWS_REGION' not in os.environ:
         monkeypatch.setenv('AWS_REGION', config['region_name'])
     return
 
 
-@pytest.fixture(scope='module')
-def config_azure(config_testing):
-    if 'azure' not in config_testing:
+@pytest.fixture
+def release_config_azure(release_config_testing):
+    if 'azure' not in release_config_testing:
         pytest.skip("Skipped because there is no `testing.azure` configuration in dcos-release.config.yaml")
-    return config_testing['azure']
+    return release_config_testing['azure']

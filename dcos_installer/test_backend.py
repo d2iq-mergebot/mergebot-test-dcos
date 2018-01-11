@@ -9,7 +9,6 @@ import boto3
 import passlib.hash
 import pytest
 
-import release
 from dcos_installer import backend
 from dcos_installer.config import Config, make_default_config_if_needed, to_config
 
@@ -266,34 +265,13 @@ aws_template_upload: false
 """
 
 
-def test_do_aws_configure(tmpdir, monkeypatch):
+def test_do_aws_configure(tmpdir, monkeypatch, release_config_aws):
     monkeypatch.setenv('BOOTSTRAP_VARIANT', 'test_variant')
     create_config(aws_base_config, tmpdir)
     create_fake_build_artifacts(tmpdir)
 
     with tmpdir.as_cwd():
         assert backend.do_aws_cf_configure() == 0
-
-
-@pytest.fixture(scope='module')
-def release_config():
-    if not os.path.exists('dcos-release.config.yaml'):
-        pytest.skip("Skipping because there is no configuration in dcos-release.config.yaml")
-    return release.load_config('dcos-release.config.yaml')
-
-
-@pytest.fixture(scope='module')
-def release_config_testing(config):
-    if 'testing' not in config:
-        pytest.skip("Skipped because there is no `testing` configuration in dcos-release.config.yaml")
-    return config['testing']
-
-
-@pytest.fixture(scope='module')
-def release_config_aws(config_testing):
-    if 'aws' not in config_testing:
-        pytest.skip("Skipped because there is no `testing.aws` configuration in dcos-release.config.yaml")
-    return config_testing['aws']
 
 
 @pytest.fixture

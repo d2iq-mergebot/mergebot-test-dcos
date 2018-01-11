@@ -190,21 +190,21 @@ def exercise_storage_provider(tmpdir, name, config):
 
 # TODO(cmaloney): Add skipping when not run under CI with the environment variables
 # So devs without the variables don't see expected failures https://pytest.org/latest/skipping.html
-def test_storage_provider_azure(config_azure, tmpdir):
-    exercise_storage_provider(tmpdir, 'azure_block_blob', config_azure)
+def test_storage_provider_azure(release_config_azure, tmpdir):
+    exercise_storage_provider(tmpdir, 'azure_block_blob', release_config_azure)
 
 
 # TODO(cmaloney): Add skipping when not run under CI with the environment variables
 # So devs without the variables don't see expected failures https://pytest.org/latest/skipping.html
-def test_storage_provider_aws(config_aws, tmpdir):
+def test_storage_provider_aws(release_config_aws, tmpdir):
     s3 = boto3.session.Session().resource('s3')
-    bucket = config_aws['bucket']
+    bucket = release_config_aws['bucket']
     s3_bucket = s3.Bucket(bucket)
     assert s3_bucket in s3.buckets.all(), (
         "Bucket '{}' must exist with full write access to AWS testing account and created objects must be globally "
-        "downloadable from: {}").format(bucket, config_aws['download_url'])
+        "downloadable from: {}").format(bucket, release_config_aws['download_url'])
 
-    exercise_storage_provider(tmpdir, 'aws_s3', config_aws)
+    exercise_storage_provider(tmpdir, 'aws_s3', release_config_aws)
 
 
 def test_storage_provider_local(tmpdir):
