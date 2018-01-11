@@ -566,7 +566,7 @@ def mock_make_tar(result_filename, folder):
 
 # Test that the do_create functions for each provider output data in the right
 # shape.
-def test_make_channel_artifacts(monkeypatch):
+def test_make_channel_artifacts(monkeypatch, release_config_aws):
     logging.basicConfig(level=logging.DEBUG)
     monkeypatch.setattr('gen.build_deploy.bash.make_installer_docker', mock_make_installer_docker)
     monkeypatch.setattr('pkgpanda.util.make_tar.__code__', mock_make_tar.__code__)
