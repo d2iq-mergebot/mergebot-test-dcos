@@ -29,7 +29,7 @@ class S3StorageProvider(AbstractStorageProvider):
     name = 'aws'
 
     def __init__(self, bucket, object_prefix, download_url,
-                 access_key_id=None, secret_access_key=None):
+                 access_key_id=None, secret_access_key=None, region_name=None):
         """ If access_key_id and secret_acccess_key are unset, boto3 will
         try to authenticate by other methods. See here for other credential options:
         http://boto3.readthedocs.io/en/latest/guide/configuration.html#configuring-credentials
@@ -37,7 +37,7 @@ class S3StorageProvider(AbstractStorageProvider):
         if object_prefix is not None:
             assert object_prefix and not object_prefix.startswith('/') and not object_prefix.endswith('/')
 
-        self.__session = get_aws_session(access_key_id, secret_access_key)
+        self.__session = get_aws_session(access_key_id, secret_access_key, region_name)
         self.__bucket = self.__session.resource('s3').Bucket(bucket)
         self.__object_prefix = object_prefix
         self.__url = download_url
