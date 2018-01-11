@@ -307,7 +307,7 @@ def test_do_aws_cf_configure_valid_storage_config(release_config_aws, tmpdir, mo
 
 def test_override_aws_template_storage_region_name(release_config_aws, tmpdir, monkeypatch, valid_storage_config):
     config_str = valid_storage_config
-    config_str += '\naws_template_storage_region_name: {}'.format(release_config_aws['region_name'])
+    config_str += '\naws_template_storage_region_name: {}'.format(os.environ['AWS_DEFAULT_REGION'])
     assert aws_cf_configure(config_str, tmpdir, monkeypatch) == 0
 
 

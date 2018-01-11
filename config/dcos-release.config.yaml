@@ -4,7 +4,6 @@ storage:
     bucket: downloads.dcos.io
     object_prefix: dcos
     download_url: https://downloads.dcos.io/dcos/
-    region_name: us-west-2
   azure:
     kind: azure_block_blob
     account_name: $AZURE_PROD_STORAGE_ACCOUNT
@@ -17,7 +16,6 @@ testing:
     bucket: testing.dcos.io
     object_prefix: dcos
     download_url: https://s3-us-west-2.amazonaws.com/testing.dcos.io/dcos/
-    region_name: us-west-2
 options:
   preferred: aws
   cloudformation_s3_url: https://s3-us-west-2.amazonaws.com/downloads.dcos.io/dcos
