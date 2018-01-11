@@ -299,15 +299,15 @@ aws_template_upload: true
     # s3_bucket.delete_objects(Delete={'Objects': objects})
 
 
-def test_do_aws_cf_configure_valid_storage_config(config_aws, tmpdir, monkeypatch, valid_storage_config):
+def test_do_aws_cf_configure_valid_storage_config(release_config_aws, tmpdir, monkeypatch, valid_storage_config):
     assert aws_cf_configure(valid_storage_config, tmpdir, monkeypatch) == 0
     # TODO: add an assertion that the config that was resolved inside do_aws_cf_configure
     # ended up with the correct region where the above testing bucket was created.
 
 
-def test_override_aws_template_storage_region_name(config_aws, tmpdir, monkeypatch, valid_storage_config):
+def test_override_aws_template_storage_region_name(release_config_aws, tmpdir, monkeypatch, valid_storage_config):
     config_str = valid_storage_config
-    config_str += '\naws_template_storage_region_name: {}'.format(config_aws['region_name'])
+    config_str += '\naws_template_storage_region_name: {}'.format(release_config_aws['region_name'])
     assert aws_cf_configure(config_str, tmpdir, monkeypatch) == 0
 
 

@@ -26,7 +26,7 @@ def release_config_aws(release_config_testing, monkeypatch):
     config = release_config_testing['aws']
     if 'AWS_REGION' not in os.environ:
         monkeypatch.setenv('AWS_REGION', config['region_name'])
-    return
+    return config
 
 
 @pytest.fixture
