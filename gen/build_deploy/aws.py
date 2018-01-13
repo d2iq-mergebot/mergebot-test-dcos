@@ -387,17 +387,21 @@ def gen_supporting_template():
 
 
 def make_advanced_bundle(variant_args, extra_sources, template_name, cc_params):
+    print('cc_params')
+    print(cc_params)
     extra_templates = [
         'aws/dcos-config.yaml',
         'aws/templates/advanced/{}'.format(template_name)
     ]
-    if cc_params['os_type'] == 'coreos':
+    supported_os = ('coreos', 'el7')
+    if cc_params['os_type'] not in supported_os:
+        raise RuntimeError('Unsupported os_type: {}'.format(cc_params['os_type']))
+    elif cc_params['os_type'] == 'coreos':
         extra_templates += ['coreos-aws/cloud-config.yaml', 'coreos/cloud-config.yaml']
         cloud_init_implementation = 'coreos'
     elif cc_params['os_type'] == 'el7':
         cloud_init_implementation = 'canonical'
-    else:
-        raise RuntimeError('Unsupported os_type: {}'.format(cc_params['os_type']))
+        cc_params['os_type'] = 'el7prereq'
 
     results = gen.generate(
         arguments=variant_args,
@@ -449,7 +453,7 @@ def gen_advanced_template(arguments, variant_prefix, reproducible_artifact_path,
         params['node_type'] = node_type
         template_key = 'advanced-{}'.format(node_type)
         template_name = template_key + '.json'
-
+        print(params)
         def _as_artifact(filename, bundle):
             yield from _as_artifact_and_pkg(variant_prefix, filename, bundle)
 
@@ -522,7 +526,7 @@ def gen_simple_template(variant_prefix, filename, arguments, extra_source):
         # Specialize the dcos-cfn-signal service
         cc_variant = results.utils.add_units(
             cc_variant,
-            yaml.safe_load(gen.template.parse_str(late_services).render(params)))
+            yaml.safe_load(gen.template.parse_str(late_services).render(deepcopy(params))))
 
         # Add roles
         cc_variant = results.utils.add_roles(cc_variant, params['roles'] + ['aws'])
