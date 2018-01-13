@@ -391,13 +391,15 @@ def make_advanced_bundle(variant_args, extra_sources, template_name, cc_params):
         'aws/dcos-config.yaml',
         'aws/templates/advanced/{}'.format(template_name)
     ]
-    if cc_params['os_type'] == 'coreos':
+    supported_os = ('coreos', 'el7')
+    if cc_params['os_type'] not in supported_os:
+        raise RuntimeError('Unsupported os_type: {}'.format(cc_params['os_type']))
+    elif cc_params['os_type'] == 'coreos':
         extra_templates += ['coreos-aws/cloud-config.yaml', 'coreos/cloud-config.yaml']
         cloud_init_implementation = 'coreos'
     elif cc_params['os_type'] == 'el7':
         cloud_init_implementation = 'canonical'
-    else:
-        raise RuntimeError('Unsupported os_type: {}'.format(cc_params['os_type']))
+        cc_params['os_type'] = 'el7prereq'
 
     results = gen.generate(
         arguments=variant_args,
