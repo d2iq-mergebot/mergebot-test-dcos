@@ -396,6 +396,7 @@ def make_advanced_bundle(variant_args, extra_sources, template_name, cc_params):
         cloud_init_implementation = 'coreos'
     elif cc_params['os_type'] == 'el7':
         cloud_init_implementation = 'canonical'
+        cc_params['os_type'] = 'el7prereq'
     else:
         raise RuntimeError('Unsupported os_type: {}'.format(cc_params['os_type']))
 
