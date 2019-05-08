@@ -2,7 +2,6 @@
 
 The easiest way to run microservices, big data, and containers in production.
 
-
 # What is DC/OS?
 
 Like traditional operating systems, DC/OS is system software that manages computer hardware and software resources and provides common services for computer programs.
@@ -22,7 +21,6 @@ To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 - Join the Discussion - <https://groups.google.com/a/dcos.io/d/forum/users>
 - Report an Issue - <https://jira.dcos.io>
 - Contribute - <https://dcos.io/contribute/>
-
 
 # Releases
 
