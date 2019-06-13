@@ -8,6 +8,8 @@
 
 Format of the entries must be.
 
+
+
 * Entry with no-newlines. (DCOS_OSS_JIRA)
 <new-line>
 * Entry two with no-newlines. (DCOS_OSS_JIRA_2)
