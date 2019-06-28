@@ -2,6 +2,10 @@
 
 The easiest way to run microservices, big data, and containers in production.
 
+<<<<<<< HEAD
+=======
+Here addition
+>>>>>>> f7b5f86... Update README.md
 
 # What is DC/OS?
 
