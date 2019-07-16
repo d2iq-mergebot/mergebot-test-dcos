@@ -13,6 +13,7 @@ Format of the entries must be.
 * Entry two with no-newlines. (DCOS_OSS_JIRA_2)
 ```
 
+* Test changes.md
 
 ### Highlights
 
