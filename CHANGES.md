@@ -27,6 +27,8 @@ This change also aligned the authentication architectures between DC/OS Enterpri
 
 ### What's new
 
+* Support Changes.md in the workflow
+
 * Release of Marathon 1.8 with refactored Task Instance management.
 
 * Telegraf's statsd input plugin reports additional internal metrics. (DCOS_OSS-4759)
@@ -123,3 +125,4 @@ This change also aligned the authentication architectures between DC/OS Enterpri
 ### Notable changes
 
 * Bumped DC/OS UI to [master+v2.40.10](https://github.com/dcos/dcos-ui/releases/tag/master%2Bv2.40.10)
+
