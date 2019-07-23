@@ -23,7 +23,6 @@ To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 - Report an Issue - <https://jira.dcos.io>
 - Contribute - <https://dcos.io/contribute/>
 
-
 # Releases
 
 DC/OS releases are publicly available on <http://dcos.io/releases/>
