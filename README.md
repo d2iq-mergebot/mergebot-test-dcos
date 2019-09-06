@@ -22,7 +22,12 @@ To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 
 
 
+<<<<<<< HEAD
 >>>>>>> a553bbb... oh-boy-more-lines
+=======
+
+
+>>>>>>> 79778c0... Update README.md
 # How Do I...?
 
 - Learn More - <https://dcos.io/>
