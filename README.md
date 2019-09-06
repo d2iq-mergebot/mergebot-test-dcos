@@ -12,6 +12,11 @@ Unlike traditional operating systems, DC/OS spans multiple machines within a net
 To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 720f180... here-empty-lines
 # How Do I...?
 
 - Learn More - <https://dcos.io/>
