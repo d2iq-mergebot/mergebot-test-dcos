@@ -11,6 +11,7 @@ Unlike traditional operating systems, DC/OS spans multiple machines within a net
 
 To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 =======
@@ -28,6 +29,8 @@ To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 
 
 >>>>>>> 79778c0... Update README.md
+=======
+>>>>>>> 457b6cd... Update README.md
 # How Do I...?
 
 - Learn More - <https://dcos.io/>
