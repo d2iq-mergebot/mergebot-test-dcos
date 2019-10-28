@@ -6,10 +6,15 @@
    "merge-it": true,
    "sync": true,
    "changelog-not-required": true,
+   "backport": true,
    "override-status": {
-    "enabled": true,
-    "jira_label": "mergebot-override"
-    },
+        "enabled": true,
+        "jira_label": "mergebot-override"
+   },
+   "restart": {
+        "enabled": true,
+        "jira_label": "mergebot-restart"
+   },
     "label": {
         "enabled": true,
         "default": "Work In Progress",
