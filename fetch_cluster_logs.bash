@@ -1,5 +1,5 @@
 #!/bin/bash
-#
+# asdf
 # SUMMARY:
 #   Helper script that can fetch all logs for any cluster and outputs them in the current working directory.
 #   Fetched logs are comprised of journald logs, mesos logs, sandbox logs and diagnostics bundles for all nodes.
