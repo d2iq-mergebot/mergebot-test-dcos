@@ -90,5 +90,8 @@
                   "teamcity/dcos/test/aws/onprem/static/group3",
                   "teamcity/dcos/test/aws/onprem/static/group4",
                   "teamcity/dcos/test/test-e2e/group1"]
-    }
+    },
+    "test-binding": {"mergebot/test-imitation": {"type": "teamcity",
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
+                    }
 }
