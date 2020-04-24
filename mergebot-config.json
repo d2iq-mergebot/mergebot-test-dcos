@@ -92,6 +92,8 @@
                   "teamcity/dcos/test/test-e2e/group1"]
     },
     "test-binding": {"mergebot/test-imitation": {"type": "teamcity",
-                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
+                     "mergebot/jenkins-test-imitation": {"type": "jenkins",
+                                                         "id": "MergebotTestImitation"}
                     }
 }
