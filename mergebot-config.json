@@ -37,7 +37,8 @@
             "master": "DC/OS 1.13.0",
             "1.12": "DC/OS 1.12.4",
             "1.11": "DC/OS 1.11.11",
-            "1.10": "DC/OS 1.10.12"
+            "1.10": "DC/OS 1.10.12",
+            "cprovencher-test-branch": "hello"
         },
         "jira_regex": "((?:DCOS|DCOS_OSS|COPS|MARATHON)-\\d+)"
     },
