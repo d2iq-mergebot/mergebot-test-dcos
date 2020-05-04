@@ -7,6 +7,7 @@
    "sync": true,
    "changelog-not-required": true,
    "backport": true,
+   "test": true,
    "override-status": {
         "enabled": true,
         "jira_label": "mergebot-override"
