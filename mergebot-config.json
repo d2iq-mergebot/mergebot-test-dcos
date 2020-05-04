@@ -7,6 +7,7 @@
    "sync": true,
    "changelog-not-required": true,
    "backport": true,
+   "test": true,
    "override-status": {
         "enabled": true,
         "jira_label": "mergebot-override"
@@ -92,8 +93,6 @@
                   "teamcity/dcos/test/test-e2e/group1"]
     },
     "test-binding": {"mergebot/test-imitation": {"type": "teamcity",
-                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
-                     "mergebot/jenkins-test-imitation": {"type": "jenkins",
-                                                         "id": "MergebotTestImitation"}
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
                     }
 }
