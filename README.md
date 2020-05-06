@@ -11,10 +11,14 @@ Unlike traditional operating systems, DC/OS spans multiple machines within a net
 
 To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 
+<<<<<<< HEAD
 
 
 
 # How Do I...?
+=======
+# How Do I...?    
+>>>>>>> e601456... be3bebe
 
 - Learn More - <https://dcos.io/>
 - Find the Docs - <https://dcos.io/docs/>
