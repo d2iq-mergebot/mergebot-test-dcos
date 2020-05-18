@@ -42,6 +42,7 @@
         },
         "jira_regex": "((?:DCOS|DCOS_OSS|COPS|MARATHON)-\\d+)"
     },
+    "dismiss-stale-reviews": true,
     "required statuses": {
         "master" : ["mergebot/enterprise/build-status/aggregate", 
                     "mergebot/enterprise/has_ship-it",
