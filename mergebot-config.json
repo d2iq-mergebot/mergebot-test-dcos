@@ -40,7 +40,7 @@
             "1.11": "DC/OS 1.11.11",
             "1.10": "DC/OS 1.10.12"
         },
-        "jira_regex": "((?:DCOS|DCOS_OSS|COPS|MARATHON)-\\d+)"
+        "jira_regex": "((?:D2IQ|DCOS|DCOS_OSS|COPS|MARATHON)-\\d+)"
     },
     "dismiss-stale-reviews": true,
     "required statuses": {
