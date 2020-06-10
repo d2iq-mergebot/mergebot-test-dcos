@@ -3,13 +3,19 @@
 The easiest way to run microservices, big data, and containers in production.
 
 
+
+
+
+
+
+
+
 # What is DC/OS?
 
 Like traditional operating systems, DC/OS is system software that manages computer hardware and software resources and provides common services for computer programs.
-
 Unlike traditional operating systems, DC/OS spans multiple machines within a network, aggregating their resources to maximize utilization by distributed applications.
-
 To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
+
 
 
 # How Do I...?
@@ -22,6 +28,7 @@ To learn more, see the [DC/OS Overview](https://dcos.io/docs/latest/overview/).
 - Join the Discussion - <https://groups.google.com/a/dcos.io/d/forum/users>
 - Report an Issue - <https://jira.dcos.io>
 - Contribute - <https://dcos.io/contribute/>
+
 
 
 # Releases
@@ -288,3 +295,7 @@ Pull requests automatically trigger a new DC/OS build and run several tests. The
 | teamcity/dcos/test/upgrade                     | Upgrade from stable minor version                                                                                       | [mesosphere/advanced-tests](https://github.com/mesosphere/advanced-tests/) repo (transitively, [dcos/dcos-test-utils](https://github.com/dcos/dcos-test-utils) , dcos/dcos-launch)                  |
 | teamcity/dcos/test/upgrade-from-previous-major | Upgrade from previous major version                                                                                     | mesosphere/advanced-tests repo (transitively, dcos/dcos-test-utils, dcos/dcos-launch)                  |
 | teamcity/dcos/test/upgrade-to-next-major       | Upgrade to Next Major version                                                                                           | mesosphere/advanced-tests repo (transitively, dcos/dcos-test-utils, dcos/dcos-launch)                  |
+
+
+
+
