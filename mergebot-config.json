@@ -97,5 +97,6 @@
                                                  "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
                     },
     "autotest-on-backports-and-trains": true,
-    "autotrigger-tests-on-ready-for-review": true
+    "autotrigger-tests-on-ready-for-review": true,
+    "ready-for-review-label": "Ready For Review"
 }
