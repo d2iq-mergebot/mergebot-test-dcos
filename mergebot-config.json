@@ -96,5 +96,5 @@
     "test-binding": {"mergebot/test-imitation": {"type": "teamcity",
                                                  "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
                     },
-    "autotest-on-backports-and-trains": false
+    "autotest-on-backports-and-trains": true
 }
