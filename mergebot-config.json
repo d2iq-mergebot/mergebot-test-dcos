@@ -35,7 +35,7 @@
         "enabled": true,
         "interactive": false,
         "fix_version_map": {
-            "master": "mergebot.test.version",
+            "master": "mergebot.skumaran.2",
             "1.12": "DC/OS 1.12.4",
             "1.11": "DC/OS 1.11.11",
             "1.10": "DC/OS 1.10.12"
