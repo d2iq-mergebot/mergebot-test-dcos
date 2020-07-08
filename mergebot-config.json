@@ -35,7 +35,7 @@
         "enabled": true,
         "interactive": false,
         "fix_version_map": {
-            "master": "mergebot.test.version",
+            "master": "mergebot.skumaran.4",
             "1.12": "DC/OS 1.12.4",
             "1.11": "DC/OS 1.11.11",
             "1.10": "DC/OS 1.10.12"
@@ -94,6 +94,19 @@
                   "teamcity/dcos/test/test-e2e/group1"]
     },
     "test-binding": {"mergebot/test-imitation": {"type": "teamcity",
+                                                 "priority": 1,
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
+                     "mergebot/dummy_check_1": {"type": "teamcity",
+                                                 "priority": 2,
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
+                     "mergebot/dummy_check_2": {"type": "teamcity",
+                                                 "priority": 2,
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
+                     "mergebot/dummy_check_3": {"type": "teamcity",
+                                                 "priority": 3,
+                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
+                     "mergebot/dummy_check_4": {"type": "teamcity",
+                                                 "priority": 3,
                                                  "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
                     },
     "autotest-on-backports-and-trains": true,
