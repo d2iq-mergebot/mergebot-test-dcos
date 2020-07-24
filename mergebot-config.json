@@ -113,5 +113,9 @@
                     },
     "autotest-on-backports-and-trains": true,
     "autotrigger-tests-on-ready-for-review": true,
-    "ready-for-review-label": "Ready For Review"
+    "ready-for-review-label": "Ready For Review",
+    "apply-override-label-on-prs": {
+        "enabled": true,
+    }
+                             
 }
