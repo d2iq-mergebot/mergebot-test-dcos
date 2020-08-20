@@ -115,7 +115,7 @@
     "autotrigger-tests-on-ready-for-review": true,
     "ready-for-review-label": "Ready For Review",
     "apply-override-label-on-prs": {
-        "enabled": true
+        "enabled": false
     }
                              
 }
