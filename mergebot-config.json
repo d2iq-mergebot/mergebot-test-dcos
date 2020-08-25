@@ -117,5 +117,8 @@
     "apply-override-label-on-prs": {
         "enabled": false
     },
-    "backport-strategy": "single-repo"                            
+    "backport-strategy": {
+        "interactive": false,
+        "strategy": "single-repo"
+    }
 }
