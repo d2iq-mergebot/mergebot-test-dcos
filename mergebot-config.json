@@ -109,6 +109,9 @@
                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
                      "mergebot/dummy_check_4": {"type": "teamcity",
                                                 "priority": 3,
+                                                "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"},
+                     "mergebot/checks/long/long/long/long/long/long/long": {"type": "teamcity",
+                                                "priority": 3,
                                                 "id": "SecureAcl_Mergebot_MergebotTeamcityTestImitation"}
                     },
     "autotest-on-backports-and-trains": true,
