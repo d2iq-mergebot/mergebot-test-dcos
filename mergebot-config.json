@@ -118,7 +118,7 @@
     "autotrigger-tests-on-ready-for-review": true,
     "ready-for-review-label": "Ready For Review",
     "apply-override-label-on-prs": {
-        "enabled": false
+        "enabled": true
     },
     "backport-strategy": {
         "interactive": false,
