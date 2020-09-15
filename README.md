@@ -11,7 +11,9 @@ The easiest way to run microservices, big data, and containers in production.
 ### Test Version Update - 4
 
 1.13.666-dev
-
+1.13.1-dev
+1.13.2-dev
+1.13.3-dev
 
 # What is DC/OS?
 
