@@ -122,6 +122,7 @@
     },
     "backport-strategy": {
         "interactive": false,
-        "strategy": "single-repo"
+        "strategy": "single-repo",
+        "copy-labels": true
     }
 }
