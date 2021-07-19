@@ -29,7 +29,7 @@ echo "I'm in the second sequence"
 
 </div>
 
-Here's a code snippet for only the second sequence:
+Here's a code snippet for the third, Windows shell sequence:
 <div class="snippet" sequences="windows.bat">
   
 ```
